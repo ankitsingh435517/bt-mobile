@@ -37,6 +37,7 @@ yarn-error.*
 
 app-example
 
-android/
+/android
+/ios
 
 cmd.txt
