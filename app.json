@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Budget Tracker",
-    "slug": "budget-tracker",
+    "slug": "bt-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
