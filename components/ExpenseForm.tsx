@@ -1,10 +1,13 @@
+import type { expense } from "@/types/common";
 import { useState } from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native";
+import Toast from "react-native-toast-message";
+import uuid from 'react-native-uuid';
 
 export function ExpenseForm({
   addExpense,
 }: {
-  addExpense: (exp: { amount: number; description: string }) => void;
+  addExpense: (exp: expense) => void;
 }) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
@@ -17,7 +20,17 @@ export function ExpenseForm({
   };
   const handleAddExpense = () => {
     if (!description || !amount) return;
-    addExpense({ amount: Number(amount), description });
+    addExpense({
+      id: uuid.v4(),
+      amount: Number(amount),
+      description,
+      date: new Date().toISOString(),
+    });
+    Toast.show({
+      type: "success",
+      text1: "Expense Added",
+      text2: `₹${amount} - ${description}`,
+    });
     setAmount("");
     setDescription("");
   };
